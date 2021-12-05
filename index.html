@@ -1354,21 +1354,21 @@ pre[class*="language-"] {
         <span class="token keyword">add_header</span> X<span class="token operator">-</span>Content<span class="token operator">-</span>Type<span class="token operator">-</span>Options nosniff<span class="token punctuation">;</span>
 <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
 <span class="token punctuation">}</span></code></pre>
-<p><img alt="" src="file:///C:/Users/dim%20orcus/AppData/Roaming/marktext/images/2021-12-05-17-42-17-image.png"></p>
+<p><img src=".\2021-12-05-17-42-17-image.png"></p>
 <h3 class="atx" id="apparmor">Apparmor</h3>
 <p>Nous pouvons avec <strong>Apparmor</strong>l imiter les services aux actions qu'il sont censé réaliser, toutes les autres actions que nous n’aurons pas autoriser seront bloquées.</p>
 <p>Il faut installer les paquets suivants : <code>apparmor</code>, <code>apparmor-profiles</code>, <code>apparmor-utils</code>.</p>
 <p>Verifiez que apparmor soit activer :</p>
 <pre><code class="fenced-code-block language-bash"><span class="token function">cat</span> /sys/module/apparmor/parameters/enabled</code></pre>
-<img width="709" alt="" title="" src="file:///C:/Users/dim%20orcus/AppData/Roaming/marktext/images/2021-12-05-18-52-43-image.png">
+<img width="709" src=".\2021-12-05-18-52-43-image.png">
 
 <p>La commande <code>aa-status</code> permet de lister les profiles apparmor des applications et des processus ainsi qu'un status sur leur mode.</p>
-<p><img alt="" src="file:///C:/Users/dim%20orcus/AppData/Roaming/marktext/images/2021-12-05-19-00-31-image.png"></p>
+<p><img src=".\2021-12-05-19-00-31-image.png"></p>
 <p>Nous avons activé les profils fourni avec <strong>Apparmor</strong> avec la commande <code>aa-enforce /etc/apparmor.d/*</code> et avons créé un profil pour le service <strong>Nginx</strong>.</p>
 <p><code>aa-autodep nginx</code> génère un profil vide pour nginx</p>
 <p><code>aa-complain nginx</code> met nginx en mode <strong><em>complain</em></strong> qui log les actions mais ne les bloques pas, cela nous permettra dans un premier temps de faire fonctionner nginx et de logger toutes les actions qu'ils est censé faire.</p>
 <p>Puis avec la commande <code>aa-logprof</code> nous pouvons choisir d'autoriser ou non ces actions : </p>
-<p><img alt="" src="file:///C:/Users/dim%20orcus/AppData/Roaming/marktext/images/2021-12-05-19-28-58-image.png"></p>
+<p><img src=".\images/2021-12-05-19-28-58-image.png"></p>
 <p>Voici le fichier de configuration généré : </p>
 <pre><code class="fenced-code-block language-c">
 <span class="token macro property"><span class="token directive-hash">#</span> <span class="token expression">Last Modified<span class="token operator">:</span> Sun Dec  <span class="token number">5</span> <span class="token number">16</span><span class="token operator">:</span><span class="token number">01</span><span class="token operator">:</span><span class="token number">49</span> <span class="token number">2021</span></span></span>
